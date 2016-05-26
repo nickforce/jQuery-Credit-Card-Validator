@@ -98,8 +98,8 @@ form #card_number.valid.discover {
     // AMEX 34, VISA 4, DISCOVER 601, MASTERCARD 510
 
     $(function() {
-
-        $('#card_number').validateCreditCard(function(result) {
+        
+        $('#card_number').validateCreditCard(function(result) { 
             $('.log').html('Card type: ' + (result.card_type == null ? '-' : result.card_type.name)
                      + '<br>Valid: ' + result.valid
                      + '<br>Length valid: ' + result.length_valid
@@ -111,8 +111,9 @@ form #card_number.valid.discover {
             else {
                 $(this).addClass(result.card_type.name);
             }
-        });
-
+            
+        }, {accept: ['mastercard', 'amex', 'discover', 'visa']});
+        
 
         /*
         $('#cc_number').on("keyup paste", function() 
